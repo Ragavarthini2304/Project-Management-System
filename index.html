@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management System | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg-dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.1);
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Floating background shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 10s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px 40px;
+            width: 400px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #00d2ff, #9cedff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        a i {
+            margin-right: 15px;
+            font-size: 1.4rem;
+            width: 30px;
+            color: var(--primary);
+        }
+
+        a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        a:active {
+            transform: scale(0.98);
+        }
+
+        /* Simple footer or subtle hint */
+        .footer-text {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            opacity: 0.4;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shape" style="width: 400px; height: 400px; background: #3a7bd5; top: -100px; left: -100px;"></div>
+    <div class="shape" style="width: 300px; height: 300px; background: #7e22ce; bottom: -50px; right: -50px; animation-delay: -5s;"></div>
+
+    <div class="container">
+        <h1>Management Portal</h1>
+
+        <div class="menu-grid">
+            <a href="employee.html">
+                <i class="fas fa-users"></i>
+                Employee Module
+            </a>
+            <a href="project.html">
+                <i class="fas fa-project-diagram"></i>
+                Project Module
+            </a>
+            <a href="task.html">
+                <i class="fas fa-list-check"></i>
+                Task Module
+            </a>
+        </div>
+
+        <div class="footer-text">ADMIN DASHBOARD V2.0</div>
+    </div>
+
+</body>
+</html>

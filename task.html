@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management | System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --glass: rgba(255, 255, 255, 0.1);
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 10s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(40px, 40px); }
+        }
+
+        .container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            width: 400px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+            background: linear-gradient(to right, #00d2ff, #9cedff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .input-group { margin-bottom: 12px; text-align: left; }
+        
+        label { 
+            display: block; 
+            font-size: 11px; 
+            color: rgba(255,255,255,0.5); 
+            margin-left: 10px; 
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            box-sizing: border-box;
+            transition: 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-insert { background: #22c55e; color: white; grid-column: span 1; }
+        .btn-update { background: #f59e0b; color: white; }
+        .btn-delete { background: #ef4444; color: white; }
+        .btn-view { background: #06b6d4; color: white; }
+        
+        /* New Dashboard Button Style */
+        .btn-dashboard {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--primary);
+            grid-column: span 2;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-home {
+            background: linear-gradient(to right, #3a7bd5, #00d2ff);
+            color: white;
+            grid-column: span 2;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .footer-link {
+            display: block;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 11px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shape" style="width: 300px; height: 300px; background: #9c27b0; top: -50px; left: -50px;"></div>
+    <div class="shape" style="width: 250px; height: 250px; background: #3a7bd5; bottom: -50px; right: -50px;"></div>
+
+    <div class="container">
+        <h2>Task Control</h2>
+
+        <form action="task.php" method="post">
+            <div class="input-group">
+                <input type="number" name="task_id" placeholder="Task ID" required>
+            </div>
+            <div class="input-group">
+                <input type="number" name="project_id" placeholder="Project ID" required>
+            </div>
+            <div class="input-group">
+                <input type="number" name="emp_id" placeholder="Employee ID" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="description" placeholder="Task Description" required>
+            </div>
+            <div class="input-group">
+                <label>Due Date</label>
+                <input type="date" name="due">
+            </div>
+            <div class="input-group">
+                <input type="text" name="status" placeholder="Status (e.g. Pending, Done)">
+            </div>
+
+            <div class="btn-grid">
+                <button type="submit" name="insert" class="btn-insert"><i class="fas fa-plus"></i> Insert Task</button>
+                <button type="submit" name="update" class="btn-update">Update</button>
+                <button type="submit" name="delete" class="btn-delete">Delete</button>
+                <button type="submit" name="view" class="btn-view">View All</button>
+                
+              
+
+                <button type="button" class="btn-home" onclick="window.location.href='index.html'">
+                    <i class="fas fa-home"></i> Return to Home
+                </button>
+            </div>
+        </form>
+
+        <a href="project.html" class="footer-link">← Back to Projects</a>
+    </div>
+
+</body>
+</html>
